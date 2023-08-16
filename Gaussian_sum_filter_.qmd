@@ -1,0 +1,115 @@
+---
+title: "Gaussian sum filter"
+format: html
+editor: visual
+execute: 
+  cache: true
+# jupyter: python3
+---
+
+## load libraries needed
+
+```{r}
+
+library(ggplot2)
+
+```
+
+# Gaussian sum filter
+
+The Gaussian sum filter is a technique used to approximate probability distributions that can be represented as a sum of Gaussian distributions. It is often used in signal processing to estimate the state of a system from noisy measurements. The approach involves representing the probability density function (PDF) of the system state as a sum of Gaussian distributions with different means and covariance matrices. The resulting approximation is then used to estimate the state of the system.
+
+```{r}
+# Generate some example data
+set.seed(123)
+x <- seq(0, 10, length.out = 101)
+y <- sin(x) + rnorm(101, 0, 0.1)
+
+
+
+# Define the Gaussian sum filter function
+gsf <- function(x, y, mu, sigma, w) {
+  # Compute the Gaussian kernels
+  kernels <- sapply(mu, function(m) dnorm(x, m, sigma))
+  
+  # Compute the filtered values
+  filtered <- apply(kernels * w, 2, function(wk) sum(wk * y))
+  
+  return(filtered)
+}
+
+# Define the parameters of the filter
+mu <- seq(0, 10, length.out = 101)
+sigma <- 0.5
+w <- rep(1/11, 101)
+
+# Apply the filter to the example data
+filtered <- gsf(x, y, mu, sigma, w)
+
+
+# Plot the original and filtered data
+df_plot <- data.frame(x =x, Original = y, Filtered = filtered)
+
+###### Check out why the legend does not work. ggplot2 should have simple scale_fill_discrete() does not function. Continue and come back later.
+
+p = ggplot(df_plot) +
+              geom_line(aes(x,y, color = 'blue')) + 
+              geom_line(aes(x, filtered, color = 'red')) +
+              theme_minimal()
+
+
+p + labs(color = 'Signals', legend= c('Original', 'filtered')) 
+
+
+# plot(x, y, type = 'l', col = 'blue', main = 'Gaussian sum filter example')
+# lines(x, filtered, col = 'red')
+# legend('topleft', legend = c('Original', 'Filtered'), col = c('blue', 'red'), lty = 1)
+```
+
+In this example, we generate some example data (y) and apply a Gaussian sum filter to it using the gsf function. The filter is defined by the parameters mu (the means of the Gaussian kernels), sigma (the standard deviation of the kernels), and w (the weights of the kernels). We then plot the original and filtered data to visualize the effect of the filter.
+
+# Python part does not work yet
+
+To be able to run python code in this quarto file. Run 'py -m pip install jupyter' or 'conda install jupyter' in the terminal below. In the window below this window you see 'console' next to this on the right is the 'terminal'.
+
+See this site for more information: https://quarto.org/docs/computations/python.html
+
+you can check if the jupyter package is correctly installed by entering the following command in the terminal : 'quarto check jupyter'
+
+<!-- ```{python} -->
+<!-- import numpy as nps -->
+<!-- import matplotlib.pyplot as plt -->
+
+<!-- # Generate some example data -->
+<!-- np.random.seed(123) -->
+<!-- x = np.linspace(0, 10, num=101) -->
+<!-- y = np.sin(x) + np.random.normal(0, 0.1, size=101) -->
+
+<!-- # Define the Gaussian sum filter function -->
+<!-- def gsf(x, y, mu, sigma, w): -->
+<!--     # Compute the Gaussian kernels -->
+<!--     kernels = np.array([np.exp(-(x - m)**2 / (2 * sigma**2)) for m in mu]) -->
+
+<!--     # Compute the filtered values -->
+<!--     filtered = np.dot(kernels.T * w, y) -->
+
+<!--     return filtered -->
+
+<!-- # Define the parameters of the filter -->
+<!-- mu = np.linspace(0, 10, num=11) -->
+<!-- sigma = 0.5 -->
+<!-- w = np.ones(11) / 11 -->
+
+<!-- # Apply the filter to the example data -->
+<!-- filtered = gsf(x, y, mu, sigma, w) -->
+
+<!-- # Plot the original and filtered data -->
+<!-- plt.plot(x, y, 'b-', label='Original') -->
+<!-- plt.plot(x, filtered, 'r-', label='Filtered') -->
+<!-- plt.legend() -->
+<!-- plt.title('Gaussian sum filter example') -->
+<!-- plt.show() -->
+
+<!-- ``` -->
+
+In this example, we first generate some example data **`y`** using NumPy's **`sin`** function and adding some random noise. We then define the Gaussian sum filter function **`gsf`** using NumPy's **`exp`** function to compute the Gaussian kernels and **`dot`** function to compute the filtered values. We apply the filter to the example data using the **`gsf`** function, and finally plot the original and filtered data using Matplotlib's **`plot`** function.

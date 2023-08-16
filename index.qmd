@@ -1,0 +1,5 @@
+# Preface {.unnumbered}
+
+This is a collection of works based on a collaboration between Rick ten Eikelder and Duco Veen.
+
+To learn more about Quarto books visit <https://quarto.org/docs/books>.

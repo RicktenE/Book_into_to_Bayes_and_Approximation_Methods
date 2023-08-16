@@ -1,0 +1,42 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "quartobook_rick_duco"
+  author: "Rick ten Eikelder en Duco Veen"
+  date: "12-05-2023"
+  chapters:
+    - index.qmd
+    - part: Intro_to_Bayesian_inference_.qmd
+      chapters:
+        - Intro_to_The_Bayes_filter_.qmd
+        - The_Bayes_filter___Variance_influence_.qmd
+        - The_Bayes_filter___Mean_influence_.qmd
+    - part: Intro_to_approximation_methods_.qmd
+      chapters:
+        - Gaussian_sum_filter_.qmd
+        - Kalman_filter_.qmd
+        - Particle_filter___Sequential_Monte_Carlo_.qmd
+        - Multilevel_Particle_filter___Sequential_Monte_Carlo_.qmd
+        - Bootstrap_filter_.qmd
+    - part: Markov_Chain_Monte_Carlo_methods_.qmd
+      chapters:
+        - Metropolis_Hastings_algorithm_.qmd
+        - Gibbs_sampling_.qmd
+        - Hamiltonian_Monte_Carlo_.qmd
+    - part: Intro_to_Variational_Inference_.qmd
+    - part: Concluding___Comparison_.qmd
+
+bibliography: references.bib
+
+number-depth: 3
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: source
+

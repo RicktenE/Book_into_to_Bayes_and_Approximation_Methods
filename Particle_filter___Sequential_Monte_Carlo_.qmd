@@ -1,0 +1,160 @@
+---
+title: "Particle filter - Sequential Monte Carlo (SMC)"
+format: html
+editor: visual
+execute:
+  cache: true
+# jupyter: python3
+---
+
+## load libraries needed
+
+```{r}
+
+library(ggplot2)
+```
+
+Particle Filter Sequential Monte Carlo (SMC) is a recursive Bayesian filtering algorithm used to estimate the hidden state of a system based on noisy observations. It is particularly useful in situations where the system dynamics are nonlinear and non-Gaussian.
+
+The SMC particle filter represents the posterior distribution of the hidden state using a set of weighted particles. Each particle corresponds to a hypothesis about the hidden state, and its weight represents the likelihood of that hypothesis given the observations.
+
+The algorithm proceeds in a sequential manner, updating the particles and their weights at each time step:
+
+1 - Initialization: Start with an initial set of particles representing the prior distribution of the hidden state.
+
+2 - Prediction: Propagate each particle forward in time according to the system dynamics, introducing stochasticity if necessary.
+
+3 - Update: Compute the likelihood of each particle by comparing its predicted state to the observed data. Assign weights to the particles based on their likelihoods.
+
+4 - Resampling: Resample particles with replacement from the weighted set, favoring particles with higher weights. This step eliminates low-weight particles and duplicates high-weight particles, ensuring a diverse set of particles that represents the posterior distribution more accurately.
+
+5 - Estimation: Estimate the filtered state by summarizing the set of particles, commonly using the mean or weighted average.
+
+Repeat steps 2 to 5 for each subsequent time step.
+
+By iteratively updating and resampling the particles, the SMC particle filter provides an approximation of the posterior distribution of the hidden state over time. It is a flexible and powerful technique for state estimation in dynamic systems with nonlinear and non-Gaussian characteristics.
+
+# R
+
+```{r}
+# Particle Filter SMC in R
+
+# Function to generate observations
+generate_observations <- function(time_steps, true_states) {
+  observations <- rnorm(time_steps, true_states, 1)
+  return(observations)
+}
+
+# Function to calculate the likelihood of a particle
+calculate_likelihood <- function(particle, observation) {
+  likelihood <- dnorm(observation, particle, 1)
+  return(likelihood)
+}
+
+# Particle Filter SMC function
+particle_filter_smc <- function(time_steps, num_particles) {
+  # Initialize particles and weights
+  particles <- rnorm(num_particles, 0, 1)
+  weights <- rep(1/num_particles, num_particles)
+  
+  # Initialize estimates
+  filtered_states <- numeric(time_steps)
+  
+  for (t in 1:time_steps) {
+    # Generate observations
+    true_state <- sin(t/5) # True state at time t
+    observation <- generate_observations(1, true_state)
+    
+    # Update weights
+    for (i in 1:num_particles) {
+      weights[i] <- calculate_likelihood(particles[i], observation) * weights[i]
+    }
+    weights <- weights / sum(weights)
+    
+    # Resampling step
+    indices <- sample.int(num_particles, num_particles, replace = TRUE, prob = weights)
+    particles <- particles[indices]
+    
+    # Estimate filtered state
+    filtered_state <- mean(particles)
+    filtered_states[t] <- filtered_state
+  }
+  
+  return(filtered_states)
+}
+
+# Run the particle filter
+set.seed(123)
+time_steps <- 100
+num_particles <- 100
+filtered_states <- particle_filter_smc(time_steps, num_particles)
+
+# Plot the results
+plot(filtered_states, type = "l", main = "Particle Filter SMC in R")
+```
+
+The code generates observations from a known true state and uses the particle filter to estimate the filtered states based on these observations.
+
+The R code uses the rnorm function to generate normally distributed observations and likelihood calculations. It initializes particles and weights, updates weights based on the likelihood, performs resampling, and estimates the filtered state using the mean of the particles. The results are plotted using the plot function.
+
+The Python code uses NumPy to generate observations and likelihood calculations. It initializes particles and weights using numpy.random.normal, updates weights based on the likelihood, performs resampling using numpy.random.choice, and estimates the filtered state using the mean of the particles. The results are plotted using matplotlib.pyplot.plot.
+
+You can run either the R or Python code to see the particle filter in action for the toy example. Feel free to adjust the parameters, such as the number of time steps and particles, to explore different scenarios.
+
+<!-- # Python -->
+
+<!-- ```{python3} -->
+<!-- import numpy as np -->
+<!-- import matplotlib.pyplot as plt -->
+
+<!-- # Function to generate observations -->
+<!-- def generate_observations(time_steps, true_states): -->
+<!--     observations = np.random.normal(true_states, 1, time_steps) -->
+<!--     return observations -->
+
+<!-- # Function to calculate the likelihood of a particle -->
+<!-- def calculate_likelihood(particle, observation): -->
+<!--     likelihood = np.random.normal(observation, 1, particle) -->
+<!--     return likelihood -->
+
+<!-- # Particle Filter SMC function -->
+<!-- def particle_filter_smc(time_steps, num_particles): -->
+<!--     # Initialize particles and weights -->
+<!--     particles = np.random.normal(0, 1, num_particles) -->
+<!--     weights = np.ones(num_particles) / num_particles -->
+
+<!--     # Initialize estimates -->
+<!--     filtered_states = np.zeros(time_steps) -->
+
+<!--     for t in range(time_steps): -->
+<!--         # Generate observations -->
+<!--         true_state = np.sin(t/5)  # True state at time t -->
+<!--         observation = generate_observations(1, true_state) -->
+
+<!--         # Update weights -->
+<!--         for i in range(num_particles): -->
+<!--             weights[i] = calculate_likelihood(particles[i], observation) * weights[i] -->
+<!--         weights /= np.sum(weights) -->
+
+<!--         # Resampling step -->
+<!--         indices = np.random.choice(np.arange(num_particles), size=num_particles, replace=True, p=weights) -->
+<!--         particles = particles[indices] -->
+
+<!--         # Estimate filtered state -->
+<!--         filtered_state = np.mean(particles) -->
+<!--         filtered_states[t] = filtered_state -->
+
+<!--     return filtered_states -->
+
+<!-- # Run the particle filter -->
+<!-- np.random.seed(123) -->
+<!-- time_steps = 100 -->
+<!-- num_particles = 100 -->
+<!-- filtered_states = particle_filter_smc(time_steps, num_particles) -->
+
+<!-- # Plot the results -->
+<!-- plt.plot(filtered_states) -->
+<!-- plt.title("Particle Filter SMC in Python") -->
+<!-- plt.show() -->
+
+<!-- ``` -->

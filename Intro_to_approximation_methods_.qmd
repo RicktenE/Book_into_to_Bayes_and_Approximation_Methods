@@ -1,0 +1,28 @@
+---
+title: "Intro to approximation methods"
+format: html
+editor: visual
+execute: 
+  cache: true
+---
+
+## 
+
+```         
+```
+
+# Intro to approximation methods
+
+In this chapter, we will explore several popular approximation methods implemented in both Python and R: the Gaussian sum filter, Kalman filter, particle filter (also known as sequential Monte Carlo), and the bootstrap filter. These methods are commonly used in a range of applications, including signal processing, robotics, and finance, to name a few.
+
+The Gaussian sum filter is a technique used to approximate probability distributions that can be represented as a sum of Gaussian distributions. It is often used in signal processing to estimate the state of a system from noisy measurements. In Python and R, this technique is implemented using the Kalman filter, which is a widely-used algorithm for state estimation in linear dynamic systems.
+
+The particle filter, or sequential Monte Carlo, is an alternative method for estimating the state of a system when the underlying distribution cannot be represented by a simple model. It works by approximating the true distribution using a set of weighted particles. In both Python and R, this method can be implemented using the particle filter SMC algorithm.
+
+Finally, the bootstrap filter is a simple and flexible technique used to estimate the state of a system based on a set of measurements. It works by resampling the measurements and updating the estimates based on the new sample. This method is often used in finance to estimate the value of financial instruments such as options and futures.
+
+Throughout this chapter, we will provide code examples in both Python and R to demonstrate the implementation of these approximation methods. We will also discuss the advantages and disadvantages of each method and provide guidance on when to use each technique.
+
+Monte Carlo Markov Chain methods are discussed in the next chapter
+
+## 

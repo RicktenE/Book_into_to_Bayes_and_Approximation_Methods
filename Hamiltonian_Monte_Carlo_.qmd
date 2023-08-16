@@ -1,0 +1,27 @@
+---
+title: "Intro to prior influence"
+format: html
+editor: visual
+---
+
+## load libraries needed
+
+```{r}
+library(rstanarm)
+library(ggplot2)
+library(bayesplot)
+library(blavaan)
+library(dplyr)
+library(magick)
+library(ggplot2)
+library(tidyverse)
+library(ggridges)
+library(dplyr)
+library(tidyr)
+library(rsvg)
+theme_set(bayesplot::theme_default())
+theme_set(theme_bw())
+
+```
+
+# 
