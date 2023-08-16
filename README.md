@@ -1,0 +1,2 @@
+# Intro_to_Bayes_and_Approximation_Methods
+ This book gives an overview of bayesian inference and approximation methods. The motivation for this book was to find a method to approximate the posterior distribution and use this approximation as a prior distribution for the next step. The challenge lies in finding a suitable approximation method that can also represent the multilevel dependencies in the original data. 
