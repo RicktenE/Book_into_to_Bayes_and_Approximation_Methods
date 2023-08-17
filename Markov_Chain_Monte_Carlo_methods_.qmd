@@ -1,7 +1,10 @@
 ---
-title: "Intro to prior influence"
+title: "Markov Chain Monte Carlo methods"
 format: html
 editor: visual
+execute:
+  cache: true
+  warning: false
 ---
 
 ## load libraries needed

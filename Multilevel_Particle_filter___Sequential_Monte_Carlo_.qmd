@@ -4,6 +4,7 @@ format: html
 editor: visual
 execute:
   cache: true
+  warning: false
 # jupyter: python3
 ---
 
@@ -114,81 +115,3 @@ abline(h = true_param, col = "red", lty = 2, lwd = 2, label = "True Parameter")
 legend("topright", legend = "True Parameter", col = "red", lty = 2, lwd = 2)
 
 ```
-
-<!-- # Python -->
-
-<!-- ```{python} -->
-<!-- import numpy as np -->
-<!-- import matplotlib.pyplot as plt -->
-
-<!-- # Generate observations at each level -->
-<!-- def generate_observations(num_samples, true_param, noise_sd): -->
-<!--     observations = [] -->
-<!--     for _ in range(num_samples): -->
-<!--         # Level 1 observations -->
-<!--         level1_obs = np.random.normal(true_param, noise_sd) -->
-
-<!--         # Level 2 observations -->
-<!--         level2_obs = np.random.normal(level1_obs, noise_sd) -->
-
-<!--         observations.append([level1_obs, level2_obs]) -->
-<!--     return np.array(observations) -->
-
-<!-- # Calculate the likelihood of a particle at each level -->
-<!-- def calculate_likelihood(particle, observation, noise_sd): -->
-<!--     level1_likelihood = np.exp(-0.5 * ((observation[0] - particle) / noise_sd)**2) / (np.sqrt(2*np.pi) * noise_sd) -->
-<!--     level2_likelihood = np.exp(-0.5 * ((observation[1] - observation[0]) / noise_sd)**2) / (np.sqrt(2*np.pi) * noise_sd) -->
-<!--     return level1_likelihood * level2_likelihood -->
-
-<!-- # Particle Filter SMC function for multilevel model -->
-<!-- def particle_filter_smc_multilevel(num_samples, num_particles, noise_sd): -->
-<!--     # Initialize particles and weights -->
-<!--     particles = np.random.normal(0, 1, num_particles) -->
-<!--     weights = np.ones(num_particles) / num_particles -->
-
-<!--     # Initialize estimates -->
-<!--     filtered_states = np.zeros((num_samples, num_particles)) -->
-
-<!--     for t in range(num_samples): -->
-<!--         # Generate observations -->
-<!--         observations = generate_observations(1, true_param, noise_sd) -->
-
-<!--         # Update weights -->
-<!--         for i in range(num_particles): -->
-<!--             weights[i] = calculate_likelihood(particles[i], observations, noise_sd) * weights[i] -->
-<!--         weights /= np.sum(weights) -->
-
-<!--         # Resampling step -->
-<!--         indices = np.random.choice(np.arange(num_particles), size=num_particles, replace=True, p=weights) -->
-<!--         particles = particles[indices] -->
-
-<!--         # Estimate filtered state -->
-<!--         filtered_states[t] = particles -->
-
-<!--     return filtered_states -->
-
-<!-- # True parameter value -->
-<!-- true_param = 2.0 -->
-
-<!-- # Set random seed for reproducibility -->
-<!-- np.random.seed(123) -->
-
-<!-- # Run the particle filter for the multilevel model -->
-<!-- num_samples = 100 -->
-<!-- num_particles = 100 -->
-<!-- noise_sd = 1.0 -->
-<!-- filtered_states = particle_filter_smc_multilevel(num_samples, num_particles, noise_sd) -->
-
-<!-- # Plot the results -->
-<!-- plt.figure(figsize=(10, 6)) -->
-<!-- for p in range(num_particles): -->
-<!--     plt.plot(filtered_states[:, p], alpha=0.2, color='b') -->
-<!-- plt.axhline(true_param, color='r', linestyle='--', label='True Parameter') -->
-<!-- plt.xlabel('Time Step') -->
-<!-- plt.ylabel('Filtered State') -->
-<!-- plt.title('Particle Filter SMC for Multilevel Model') -->
-<!-- plt.legend() -->
-<!-- plt.show() -->
-
-
-<!-- ``` -->

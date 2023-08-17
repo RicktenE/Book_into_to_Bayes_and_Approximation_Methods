@@ -4,7 +4,10 @@ format: html
 editor: visual
 execute: 
   cache: true
+  warning: false
+  message: false
 ---
+
 ```{r}
 library(rstanarm)
 library(ggplot2)
@@ -21,6 +24,7 @@ library(rsvg)
 theme_set(bayesplot::theme_default())
 theme_set(theme_bw())
 ```
+
 ## Mean study
 
 Lets make a dataframe of each iteration and put this in a list. Then use this list to create the plots later. The making of the plots in a different loop makes that the program is more easily adjustable. If we want to make changes in the plots we don't have to run the data frame creation
@@ -48,8 +52,6 @@ count_i <- 0
 
 #fit the model and produce the posterior, save both posterior and corresponding prior
 for(i in means){
-# for(i in 1:15){
-  print(i)
   
   count_i <- count_i +1
   list_prior[[count_i]] <- as.array(rnorm(2000, i, 3))
@@ -221,11 +223,8 @@ image_write(image = img_animated,
 
 
 
-# play_image <- FALSE
-# if(play_image){
-#   ## view animated image
-#   img_animated
-
-
-
+play_image <- TRUE
+if(play_image){
+  ## view animated image
+  img_animated}
 ```

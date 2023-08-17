@@ -1,5 +1,5 @@
 ---
-title: "Intro to prior influence"
+title: "Hamiltonian monte carlo"
 format: html
 editor: visual
 ---

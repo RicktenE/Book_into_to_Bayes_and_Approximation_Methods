@@ -1,5 +1,5 @@
 ---
-title: "Intro to prior influence"
+title: "Concluding, Comparison"
 format: html
 editor: visual
 ---

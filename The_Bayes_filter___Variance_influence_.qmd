@@ -4,6 +4,8 @@ format: html
 editor: visual
 execute: 
   cache: true
+  warning: false
+  message: false
 ---
 
 ```{r, results=FALSE}
@@ -22,6 +24,7 @@ library(rsvg)
 theme_set(bayesplot::theme_default())
 theme_set(theme_bw())
 ```
+
 ## When does the prior start to influence the posterior too much?
 
 For this analysis I chose a prior that is slightly closer to the population then in the previous section, for plotting purposes. The prior will be sharp enough to demonstrate the influence of the prior on the posterior.
@@ -62,20 +65,10 @@ for(i in variance){
 
 
 hist(y, main = 'sample distribution')
-# mcmc_hist(list_posterior_test[[2]] , title = 'Variance of prior precision[2]')
+
 mcmc_dens_overlay(list_posterior_test[[11]])
 mcmc_dens(list_posterior_test[[2]])
-# mcmc_dens_chains(list_posterior_test[[10]])
 
-# means_test <- array(NA, dim = length(variance[2:15]))
-# for(j in 2:length(variance)){
-#   data_post <- mcmc_dens_chains_data(list_posterior_test[[j]])
-#   data_post_sub <- subset(data_post, parameter == '(Intercept)')
-#   means_test[j-1] <- mean(data_post_sub$x)
-# }
-# plot(log10(variance[2:15]), means_test)
-# df_plots <- data.frame(means_test, variance[2:15])
-# ggplot(df_plots, aes(variance, means_test))
 
 means_test <- array(NA, dim = length(variance))
 for(j in 1:length(variance)){
@@ -93,9 +86,6 @@ df_plots <- data.frame(means_test, variance)
 ggplot(df_plots, aes(log10(variance), means_test))+
   geom_point() +
   geom_line()
-
-
-
 
 ```
 
@@ -143,31 +133,14 @@ for(j in mean_prior){
 
 hist(y, main = 'sample distribution')
 
-# mcmc_hist(list_posterior_test[[2]]) #, title = 'Variance of prior precision[2]')
 mcmc_dens_overlay(list_posterior_test[[11]])
-# mcmc_dens(list_posterior_test[[2]])
-# mcmc_dens_chains(list_posterior_test[[10]])
-
-# means_test <- array(NA, dim = length(precision)-1)
-# for(j in 2:length(precision)){
-#   data_post <- mcmc_dens_chains_data(list_posterior_test[[j]])
-#   data_post_sub <- subset(data_post, parameter == '(Intercept)')
-#   means_test[j-1] <- mean(data_post_sub$x)
-# }
-# plot(log10(precision[2:15]), means_test)
-# df_plots <- data.frame(means_test, precision[2:15])
-# ggplot(df_plots, aes(precision, means_test))
 
 
 means_test <- array(NA, dim = len)
 exception <- 0
 for(k in 1:len){
-  # print(k)
-  # print(1 + exception*12)
-  
   if(k == 1 + exception*12){
     exception <- exception + 1
-    # print('check')
     means_test[k] <- as.array(mean(list_posterior_test[[k]]))
   }
   else{
@@ -215,9 +188,6 @@ count_i <- 0
 
 #fit the model and produce the posterior, save both posterior and corresponding prior
 for(i in variance){
-# for(i in 1:15){
-  print(i)
-  
   count_i <- count_i +1
   list_priors_test[[count_i]] <- as.array(rnorm(1000, 50, i))
   fit_test <- stan_glm(y ~ 1, 
@@ -238,18 +208,15 @@ for(i in variance){
 
 
 ## create a directory to which the images will be written
-# dir_out <- file.path("D:\\UU\\ResearchMnS\\Git_repo\\BSUA-CHM\\Pre_research_R_files\\Figures_for_gif", "post_prior_data")
+
 dir_out <- file.path(getwd(), "post_prior_data")
 dir.create(dir_out, recursive = TRUE)
 
 ## prepare data; done before. Start with just gif with changing posterior
+
 post_dist <- data.frame(list_posterior_test)
 prior_dist <- list_priors_test
 sample_dist <- y
-
-# dist_data <- data.frame(Posterior = post_dist, prior = prior_dist, data = sample_dist)
-
-##  set y axis limit after running to see what gives a nice representation
 
 # --------------------------------------------------------------------------------------------------
 ## loop through distributions ...
@@ -258,8 +225,6 @@ sample_dist <- y
 ## write plot to file
 
 for(index in 1:length(variance)){
-# for(index in 1:20){
-  print(index)
   if(index == 1){
     name <- "chain.1..Intercept."
   }
@@ -303,7 +268,7 @@ img_animated <- image_animate(img_joined, fps = 2, optimize = TRUE)
 image_write(image = img_animated,
             path = "post_prior_data.gif")
 
-play_image <- FALSE
+play_image <- TRUE
 if(play_image){
   ## view animated image
   img_animated
@@ -328,7 +293,6 @@ df = data.frame(y, x0)
 
 # Design the different priors -> in this case only the variance changes
 variance <- c(seq(1E-2,1E-1,2E-2),seq(1E-1, 1, 2E-1),seq(1,2,5E-2),seq(2,6,2),seq(6,106, 25))
-# variance <- c(1:3)
 
 # initialise the list for plotting the distributions later on
 list_posterior <-list()
@@ -339,9 +303,6 @@ count_i <- 0
 
 #fit the model and produce the posterior, save both posterior and corresponding prior
 for(i in variance){
-# for(i in 1:15){
-  print(i)
-  
   count_i <- count_i +1
   list_prior[[count_i]] <- as.array(rnorm(2000, 50, i))
   fit_test <- stan_glm(y ~ 1, 
@@ -353,12 +314,6 @@ for(i in variance){
   draws <- as.data.frame(fit_test)
   list_posterior[[count_i]] <- draws$`(Intercept)`
   
-  # if(i == variance[1]){
-  #   list_posterior[[1]] <- draws$`(Intercept)`
-  # }
-  # else{
-  #   list_posterior[[length(list_posterior_test) + 1]] <- draws$`(Intercept)`
-  # }
 }
 
 ## prep the data 
@@ -389,7 +344,6 @@ for(index in 1:length(variance)){
 ```{r}
 
 ## create a directory to which the images will be written
-# dir_out <- file.path("D:\\UU\\ResearchMnS\\Git_repo\\BSUA-CHM\\Pre_research_R_files\\Figures_for_gif", "post_prior_data")
 dir_out <- file.path(getwd(), "post_prior_data_ridge")
 dir.create(dir_out, recursive = TRUE)
 
@@ -435,6 +389,12 @@ img_animated <- image_animate(img_joined, fps = 2, optimize = FALSE)
 ## save to disk
 image_write(image = img_animated,
             path = "post_prior_data_ridge.gif")
+
+play_image <- TRUE
+if(play_image){
+  ## view animated image
+  img_animated}
+
 ```
 
 ### Histogram plots - Create the plots with histograms
@@ -474,6 +434,11 @@ img_animated <- image_animate(img_joined, fps = 2, optimize = TRUE)
 ## save to disk
 image_write(image = img_animated,
             path = "post_prior_data_hist.gif")
+
+play_image <- TRUE
+if(play_image){
+  ## view animated image
+  img_animated}
 
 ```
 
@@ -518,10 +483,10 @@ image_write(image = img_animated,
 
 
 
-# play_image <- FALSE
-# if(play_image){
-#   ## view animated image
-#   img_animated
+play_image <- TRUE
+if(play_image){
+  ## view animated image
+  img_animated}
 
 
 

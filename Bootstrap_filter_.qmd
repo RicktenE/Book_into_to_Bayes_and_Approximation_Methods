@@ -2,6 +2,9 @@
 title: "Intro to prior influence"
 format: html
 editor: visual
+execute:
+  cache: true
+  warning: false
 ---
 
 ## load libraries needed

@@ -25,7 +25,6 @@ book:
         - Metropolis_Hastings_algorithm_.qmd
         - Gibbs_sampling_.qmd
         - Hamiltonian_Monte_Carlo_.qmd
-    - part: Intro_to_Variational_Inference_.qmd
     - part: Concluding___Comparison_.qmd
 
 bibliography: references.bib

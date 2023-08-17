@@ -3,6 +3,8 @@ title: "Intro to Bayesian inference"
 output: html_document
 execute: 
   cache: true
+  warning: false
+  message: false
 ---
 
 # Introduction to Bayesian Inference with R and Python

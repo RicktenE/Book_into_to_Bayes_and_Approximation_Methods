@@ -4,13 +4,9 @@ format: html
 editor: visual
 execute: 
   cache: true
+  warning: false
+  message: false
 ---
-
-## 
-
-```         
-```
-
 # Intro to approximation methods
 
 In this chapter, we will explore several popular approximation methods implemented in both Python and R: the Gaussian sum filter, Kalman filter, particle filter (also known as sequential Monte Carlo), and the bootstrap filter. These methods are commonly used in a range of applications, including signal processing, robotics, and finance, to name a few.
@@ -25,4 +21,3 @@ Throughout this chapter, we will provide code examples in both Python and R to d
 
 Monte Carlo Markov Chain methods are discussed in the next chapter
 
-## 

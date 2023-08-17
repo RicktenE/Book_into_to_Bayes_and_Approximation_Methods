@@ -3,6 +3,8 @@ title: "Intro to the Bayes filter"
 format: html
 execute: 
   cache: true
+  warning: false
+  message: false
 editor: visual
 ---
 
@@ -120,8 +122,8 @@ fit_e <- stan_glm(y_e ~ 1,
 
 posterior_error <- as.array(fit_e)
 
-# summary(fit_e)
-# summary(fit)
+summary(fit_e)
+summary(fit)
 color_scheme_set("blue")
 mcmc_areas(fit, 
            pars = c( "(Intercept)", "sigma"),
