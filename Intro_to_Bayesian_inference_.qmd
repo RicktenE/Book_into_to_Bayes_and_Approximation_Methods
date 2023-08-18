@@ -7,13 +7,13 @@ execute:
   message: false
 ---
 
-# Introduction to Bayesian Inference with R and Python
+# Introduction to Bayesian Inference with R
 
-In this tutorial, we will learn about Bayesian inference and how to perform it in R and some examples will be in Python. Bayesian inference is a method of statistical inference in which Bayes' theorem is used to update the probability for a hypothesis as more evidence or information becomes available. This method allows us to incorporate prior knowledge into our analysis and make more informed decisions.
+In this introduction, we will explore Bayesian inference in R. Bayesian inference is a method of statistical inference in which Bayes' theorem is used to update the probability for a hypothesis as more evidence or information becomes available. This method allows us to incorporate prior knowledge into our analysis and make more informed decisions.
 
 We will begin by discussing the basics of Bayesian inference and Bayes' theorem. Next, we will learn about the various types of prior distributions that can be used in Bayesian analysis. Finally, we will walk through several examples of Bayesian inference in R using the rstan package for Bayesian modeling.
 
-Before diving in, it is important to note that some understanding of probability and statistics is recommended for following along with this tutorial. Additionally, the rstan package requires the Rtools to be installed on your system.
+Before diving in, it is important to note that some understanding of probability and statistics is recommended for following along with this text. Additionally, the rstan package requires the Rtools to be installed on your system.
 
 Let's get started!
 
@@ -23,7 +23,7 @@ Bayes' theorem is the foundation of Bayesian inference. It states that the proba
 
 Mathematically, it can be represented as:
 
-$$P(H|D) = (P(D|H) * P(H)) / P(D)$$
+$$P(H|D) = \frac{P(D|H) * P(H)}{P(D)}$$
 
 Where:
 
@@ -45,7 +45,7 @@ Empirical prior: An empirical prior is a prior distribution that is based on his
 
 Informative prior: An informative prior is a prior distribution that incorporates a significant amount of information about the parameters of the model. Informative priors are often used when there is a lot of prior knowledge available about the parameters of the model.
 
-It is important to note that the choice of prior distribution can have a significant impact on the results of Bayesian analysis. In general, it is a good practice to choose a prior distribution that reflects our current knowledge or belief about the parameters of the model.
+It is important to note that the choice of prior distribution can have a significant impact on the results of Bayesian analysis, this is demonstrated in the next parts of this chapter. In general, it is a good practice to choose a prior distribution that reflects our current knowledge or belief about the parameters of the model.
 
 # Bayesian Inference in R
 
@@ -73,7 +73,7 @@ In order to fit a Bayesian model using rstan, we need to do the following steps:
 
 Fit the model to the data using the sampling() function. Here is an example of how to fit a simple linear regression model using rstan:
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(StanHeaders)
 library(ggplot2)
 library(rstan)
@@ -108,10 +108,18 @@ fit <- sampling(model, data = data)
 
 In this example, we specified the model in Stan language as a string and passed it to the stan_model() function. The model is defined by three parameters, alpha, beta, and sigma, and a likelihood function, which is a normal distribution. We also specified the data that we want to fit the model to.
 
-After fitting the model, we can extract the posterior samples using the extract() function and use them to make inferences about the parameters of the model. We can also use the summary() function to get a summary of the posterior samples.
+After fitting the model, we can extract the posterior samples using the extract() function and use them to make inferences about the parameters of the model.
+```{r}
+posterior_sample <- extract(fit)
+hist(posterior_sample$alpha)
+hist(posterior_sample$beta)
+```
+ We can also use the summary() function to get a summary of the posterior samples.
+```{r}
+summary(fit)
+```
 
-In the next section, we will walk through more examples of Bayesian inference in R using rstan. We will discuss how to specify different types of prior distributions, how to perform model checking, and how to make inferences from the posterior samples.
-
+Several different priors can be implemented in the 'rstan' package. With a normal distribution we can specify weakly informative priors or strong priors. This will be examined in the next parts of this chapter. Other options are a custom prior or a Dirichlet prior.  
 
 # Model Checking
 
@@ -120,12 +128,41 @@ After fitting a Bayesian model, it is important to check the model's fit to the 
 There are several methods for model checking in Bayesian inference. Some of the most common methods include:
 
 Trace plots: A trace plot shows the progression of the Markov chain for each parameter. It helps to check for convergence and to identify any problems with the sampling process.
+```{r}
+# Trace plot for alpha
+traceplot(fit, pars = "alpha")
+
+# Trace plot for beta
+traceplot(fit, pars = "beta")
+```
+Here's how to interpret trace plots:
+
+-Each chain corresponds to a different MCMC chain.
+-The y-axis represents the parameter values.
+-The x-axis represents the iteration number.
+-Chains have converged: The chains should show a stable behavior, indicating that they have converged to the target distribution.
+-Random walk behavior: The chains should exhibit a random walk-like pattern without strong trends or patterns.
+
 
 Autocorrelation plots: An autocorrelation plot shows the correlation between the samples at different lags. It helps to check for independence of the samples and to identify any problems with the mixing of the Markov chain.
+```{r}
+# Autocorrelation plot for alpha
+alpha_samples <- extract(fit)$alpha
+autocorr_alpha <- acf(alpha_samples, lag.max = 20)
+plot(autocorr_alpha)
+```
 
 Density plots: A density plot shows the distribution of the posterior samples for each parameter. It helps to check for unimodality and to identify any problems with the choice of prior distribution.
 
+```{r}
+# Density plot for alpha
+density_plot_alpha <- ggplot(data.frame(alpha = alpha_samples), aes(x = alpha)) +
+  geom_density() +
+  labs(title = "Density Plot for Alpha") +
+  theme_minimal()
 
+print(density_plot_alpha)
+```
 # Making Inferences from Posterior Samples
 
 Once we have performed model checking and ensured that the model is a good fit to the data, we can use the posterior samples to make inferences about the parameters of the model .
@@ -134,10 +171,40 @@ One way to make inferences is by calculating summary statistics of the posterior
 
 Another way to make inferences is by visualizing the posterior samples using plots such as histograms and kernel density plots. These plots can help to understand the shape of the posterior distribution and the uncertainty of the estimates.
 
-Additionally, we can use the posterior samples to simulate from the model. This can help to understand the predictions of the model, for example, we can use the posterior samples to predict the outcomes of new data.
+
+
+```{r}
+# Perform model checking and ensure a good fit to the data
+
+# Calculate summary statistics
+summary_stats <- summary(fit)
+
+# Visualize posterior distribution using histograms
+hist_plot_alpha <- ggplot(data.frame(alpha = extract(fit)$alpha), aes(x = alpha)) +
+  geom_histogram(binwidth = 0.1, fill = "blue", color = "black") +
+  labs(title = "Histogram of Posterior Samples for Alpha")+
+  theme_minimal()
+
+print(hist_plot_alpha)
+
+# Visualize posterior distribution using kernel density plots
+density_plot_beta <- ggplot(data.frame(beta = extract(fit)$beta), aes(x = beta)) +
+  geom_density(fill = "green", color = "black") +
+  labs(title = "Kernel Density Plot of Posterior Samples for Beta")+
+  theme_minimal()
+
+print(density_plot_beta)
+
+# Simulate from the model using posterior samples
+num_simulations <- 1000
+simulated_data <- data.frame(x = rnorm(num_simulations))
+simulated_predictions <- vector("list", num_simulations)
+
+for (i in 1:num_simulations) {
+  simulated_predictions[[i]] <- rpois(1, exp(summary_stats$summary[1, "mean"] + summary_stats$summary[2, "mean"] * simulated_data$x[i]))
+}
+```
 
 # Conclusion
 
-In this guide, we will discus the basics of Bayesian inference in R using the rstan package. We have shown how to specify a model in Stan language, how to fit the model to the data, and how to make inferences from the posterior samples. We will also discus the importance of model checking and the different methods for making inferences from the posterior samples.
-
-Bayesian inference is a powerful tool for statistical modeling and can be applied to a wide range of problems. The rstan package provides a flexible and efficient way to perform Bayesian inference in R. It allows us to specify complex models, perform model checking, and make inferences from the posterior samples with ease.
+In this guide, we will discus the basics of Bayesian inference in R using the rstan package. We have shown how to specify a model in Stan language, how to fit the model to the data. Bayesian inference is a powerful tool for statistical modeling and can be applied to a wide range of problems. The rstan package provides a flexible and efficient way to perform Bayesian inference in R. It allows us to specify complex models, perform model checking, and make inferences from the posterior samples with ease.

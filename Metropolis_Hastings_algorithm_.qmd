@@ -1,5 +1,5 @@
 ---
-title: "Metropolis Hastings algorithm"
+title: "Metropolis Hastings algorithm (To Be Continued)"
 format: html
 editor: visual
 ---

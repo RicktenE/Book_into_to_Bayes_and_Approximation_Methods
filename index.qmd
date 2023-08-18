@@ -1,4 +1,4 @@
 # Preface {.unnumbered}
 
-This is a collection of works based on a collaboration between Rick ten Eikelder and Duco Veen.
+This file describes basic use of R for Bayesian statistical analysis and approximation methods. The importance on the choices of prior are shown. The influence of different shapes of priors are shown. The file concludes with approximation methods. It is a work in progress and the later chapters (to be continued) might still be added for completion. This is a collection of works based on a collaboration between Rick ten Eikelder and Duco Veen.
 

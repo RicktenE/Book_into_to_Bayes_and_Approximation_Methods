@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quartobook_rick_duco - Intro to approximation methods</title>
+<title>Intro to Bayesian inference and approximation methods in R (work in progress) - Intro to approximation methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">quartobook_rick_duco</a> 
+      <a href="./">Intro to Bayesian inference and approximation methods in R (work in progress)</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -116,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Intro_to_The_Bayes_filter_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Intro to the Bayes filter</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Bayes filter</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -169,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Bootstrap_filter_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Intro to prior influence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bootstrap filter (To Be Continued)</span></span></a>
   </div>
 </li>
       </ul>
@@ -177,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./Markov_Chain_Monte_Carlo_methods_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro to prior influence</span></a>
+ <span class="menu-text">Markov Chain Monte Carlo methods (To Be Continued)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -186,30 +186,26 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Metropolis_Hastings_algorithm_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Intro to prior influence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Metropolis Hastings algorithm (To Be Continued)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Gibbs_sampling_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Intro to prior influence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Gibbs sampling (To Be Continued)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Hamiltonian_Monte_Carlo_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Intro to prior influence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hamiltonian monte carlo (To Be Continued)</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Intro to prior influence</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Intro to prior influence</span></span>
+ <span class="menu-text">Concluding, Comparison (To Be Continued)</span></span>
   </li>
     </ul>
     </div>
@@ -217,17 +213,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"></a></li>
-  <li><a href="#intro-to-approximation-methods" id="toc-intro-to-approximation-methods" class="nav-link" data-scroll-target="#intro-to-approximation-methods">Intro to approximation methods</a>
-  <ul class="collapse">
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -249,24 +235,14 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
-<pre><code></code></pre>
-</section>
-<section id="intro-to-approximation-methods" class="level1">
-<h1>Intro to approximation methods</h1>
-<p>In this chapter, we will explore several popular approximation methods implemented in both Python and R: the Gaussian sum filter, Kalman filter, particle filter (also known as sequential Monte Carlo), and the bootstrap filter. These methods are commonly used in a range of applications, including signal processing, robotics, and finance, to name a few.</p>
+<p>In this chapter, we will explore several popular approximation methods implemented in R: the Gaussian sum filter, Kalman filter, particle filter (also known as sequential Monte Carlo), and the bootstrap filter. These methods are commonly used in a range of applications, including signal processing, robotics, and finance, to name a few.</p>
 <p>The Gaussian sum filter is a technique used to approximate probability distributions that can be represented as a sum of Gaussian distributions. It is often used in signal processing to estimate the state of a system from noisy measurements. In Python and R, this technique is implemented using the Kalman filter, which is a widely-used algorithm for state estimation in linear dynamic systems.</p>
 <p>The particle filter, or sequential Monte Carlo, is an alternative method for estimating the state of a system when the underlying distribution cannot be represented by a simple model. It works by approximating the true distribution using a set of weighted particles. In both Python and R, this method can be implemented using the particle filter SMC algorithm.</p>
 <p>Finally, the bootstrap filter is a simple and flexible technique used to estimate the state of a system based on a set of measurements. It works by resampling the measurements and updating the estimates based on the new sample. This method is often used in finance to estimate the value of financial instruments such as options and futures.</p>
 <p>Throughout this chapter, we will provide code examples in both Python and R to demonstrate the implementation of these approximation methods. We will also discuss the advantages and disadvantages of each method and provide guidance on when to use each technique.</p>
 <p>Monte Carlo Markov Chain methods are discussed in the next chapter</p>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1"></h2>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

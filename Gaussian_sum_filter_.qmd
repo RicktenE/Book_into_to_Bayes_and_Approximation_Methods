@@ -57,4 +57,3 @@ legend('topleft', legend = c('Original', 'Filtered'), col = c('blue', 'red'), lt
 ```
 
 In this example, we generate some example data (y) and apply a Gaussian sum filter to it using the gsf function. The filter is defined by the parameters mu (the means of the Gaussian kernels), sigma (the standard deviation of the kernels), and w (the weights of the kernels). We then plot the original and filtered data to visualize the effect of the filter.
-

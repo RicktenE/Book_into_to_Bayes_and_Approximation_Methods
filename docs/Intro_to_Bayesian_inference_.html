@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quartobook_rick_duco - Intro to Bayesian inference</title>
+<title>Intro to Bayesian inference and approximation methods in R (work in progress) - Intro to Bayesian inference</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">quartobook_rick_duco</a> 
+      <a href="./">Intro to Bayesian inference and approximation methods in R (work in progress)</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Intro_to_The_Bayes_filter_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Intro to the Bayes filter</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Bayes filter</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -205,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Bootstrap_filter_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Intro to prior influence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bootstrap filter (To Be Continued)</span></span></a>
   </div>
 </li>
       </ul>
@@ -213,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./Markov_Chain_Monte_Carlo_methods_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro to prior influence</span></a>
+ <span class="menu-text">Markov Chain Monte Carlo methods (To Be Continued)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -222,30 +222,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Metropolis_Hastings_algorithm_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Intro to prior influence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Metropolis Hastings algorithm (To Be Continued)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Gibbs_sampling_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Intro to prior influence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Gibbs sampling (To Be Continued)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Hamiltonian_Monte_Carlo_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Intro to prior influence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hamiltonian monte carlo (To Be Continued)</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Intro to prior influence</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Intro to prior influence</span></span>
+ <span class="menu-text">Concluding, Comparison (To Be Continued)</span></span>
   </li>
     </ul>
     </div>
@@ -257,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction-to-bayesian-inference-with-r-and-python" id="toc-introduction-to-bayesian-inference-with-r-and-python" class="nav-link active" data-scroll-target="#introduction-to-bayesian-inference-with-r-and-python">Introduction to Bayesian Inference with R and Python</a></li>
+  <li><a href="#introduction-to-bayesian-inference-with-r" id="toc-introduction-to-bayesian-inference-with-r" class="nav-link active" data-scroll-target="#introduction-to-bayesian-inference-with-r">Introduction to Bayesian Inference with R</a></li>
   <li><a href="#bayes-theorem" id="toc-bayes-theorem" class="nav-link" data-scroll-target="#bayes-theorem">Bayes’ Theorem</a></li>
   <li><a href="#prior-distribution" id="toc-prior-distribution" class="nav-link" data-scroll-target="#prior-distribution">Prior Distribution</a></li>
   <li><a href="#bayesian-inference-in-r" id="toc-bayesian-inference-in-r" class="nav-link" data-scroll-target="#bayesian-inference-in-r">Bayesian Inference in R</a></li>
@@ -287,18 +283,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="introduction-to-bayesian-inference-with-r-and-python" class="level1">
-<h1>Introduction to Bayesian Inference with R and Python</h1>
-<p>In this tutorial, we will learn about Bayesian inference and how to perform it in R and some examples will be in Python. Bayesian inference is a method of statistical inference in which Bayes’ theorem is used to update the probability for a hypothesis as more evidence or information becomes available. This method allows us to incorporate prior knowledge into our analysis and make more informed decisions.</p>
+<section id="introduction-to-bayesian-inference-with-r" class="level1">
+<h1>Introduction to Bayesian Inference with R</h1>
+<p>In this introduction, we will explore Bayesian inference in R. Bayesian inference is a method of statistical inference in which Bayes’ theorem is used to update the probability for a hypothesis as more evidence or information becomes available. This method allows us to incorporate prior knowledge into our analysis and make more informed decisions.</p>
 <p>We will begin by discussing the basics of Bayesian inference and Bayes’ theorem. Next, we will learn about the various types of prior distributions that can be used in Bayesian analysis. Finally, we will walk through several examples of Bayesian inference in R using the rstan package for Bayesian modeling.</p>
-<p>Before diving in, it is important to note that some understanding of probability and statistics is recommended for following along with this tutorial. Additionally, the rstan package requires the Rtools to be installed on your system.</p>
+<p>Before diving in, it is important to note that some understanding of probability and statistics is recommended for following along with this text. Additionally, the rstan package requires the Rtools to be installed on your system.</p>
 <p>Let’s get started!</p>
 </section>
 <section id="bayes-theorem" class="level1">
 <h1>Bayes’ Theorem</h1>
 <p>Bayes’ theorem is the foundation of Bayesian inference. It states that the probability of a hypothesis (H) given some data (D) is proportional to the probability of the data given the hypothesis (D|H) multiplied by the prior probability of the hypothesis (H).</p>
 <p>Mathematically, it can be represented as:</p>
-<p><span class="math display">\[P(H|D) = (P(D|H) * P(H)) / P(D)\]</span></p>
+<p><span class="math display">\[P(H|D) = \frac{P(D|H) * P(H)}{P(D)}\]</span></p>
 <p>Where:</p>
 <p><span class="math inline">\(P(H|D)\)</span> is the posterior probability of the hypothesis given the data. <span class="math inline">\(P(D|H)\)</span> is the likelihood of the data given the hypothesis. <span class="math inline">\(P(H)\)</span> is the prior probability of the hypothesis. <span class="math inline">\(P(D)\)</span> is the marginal likelihood, also known as the evidence. The posterior probability, <span class="math inline">\(P(H|D)\)</span>, represents our updated belief about the hypothesis after taking into account the data. The prior probability, <span class="math inline">\(P(H)\)</span>, represents our initial belief about the hypothesis before taking into account the data. The likelihood, <span class="math inline">\(P(D|H)\)</span>, represents how likely the data is given the hypothesis. The marginal likelihood, <span class="math inline">\(P(D)\)</span>, is a normalizing constant that ensures the posterior probability is a valid probability distribution.</p>
 <p>In Bayesian inference, we use Bayes’ theorem to update our belief about a hypothesis by incorporating new data. The process of updating our belief is known as updating the prior to the posterior.</p>
@@ -311,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Conjugate prior: A conjugate prior is a prior distribution that belongs to the same family as the likelihood function. When a conjugate prior is used, the posterior distribution also belongs to the same family as the prior and the likelihood.</p>
 <p>Empirical prior: An empirical prior is a prior distribution that is based on historical data. Empirical priors are often used when there is no prior knowledge available about the parameters of the model.</p>
 <p>Informative prior: An informative prior is a prior distribution that incorporates a significant amount of information about the parameters of the model. Informative priors are often used when there is a lot of prior knowledge available about the parameters of the model.</p>
-<p>It is important to note that the choice of prior distribution can have a significant impact on the results of Bayesian analysis. In general, it is a good practice to choose a prior distribution that reflects our current knowledge or belief about the parameters of the model.</p>
+<p>It is important to note that the choice of prior distribution can have a significant impact on the results of Bayesian analysis, this is demonstrated in the next parts of this chapter. In general, it is a good practice to choose a prior distribution that reflects our current knowledge or belief about the parameters of the model.</p>
 </section>
 <section id="bayesian-inference-in-r" class="level1">
 <h1>Bayesian Inference in R</h1>
@@ -332,7 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Once the package is installed, we can begin by specifying the model we want to fit using the Stan language. The Stan language is a probabilistic programming language that is used to specify Bayesian models. It allows us to define the likelihood function, prior distributions, and the parameters of the model.</p>
 <p>In order to fit a Bayesian model using rstan, we need to do the following steps:</p>
 <p>Fit the model to the data using the sampling() function. Here is an example of how to fit a simple linear regression model using rstan:</p>
-<div class="cell" data-hash="Intro_to_Bayesian_inference__cache/html/unnamed-chunk-2_be8f7ba52479b79f502438c9a8bce190">
+<div class="cell" data-hash="Intro_to_Bayesian_inference__cache/html/unnamed-chunk-2_4eb43042bdce5c242d3d51d5af9566c9">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(StanHeaders)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstan)</span>
@@ -364,28 +360,185 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sampling</span>(model, <span class="at">data =</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this example, we specified the model in Stan language as a string and passed it to the stan_model() function. The model is defined by three parameters, alpha, beta, and sigma, and a likelihood function, which is a normal distribution. We also specified the data that we want to fit the model to.</p>
-<p>After fitting the model, we can extract the posterior samples using the extract() function and use them to make inferences about the parameters of the model. We can also use the summary() function to get a summary of the posterior samples.</p>
-<p>In the next section, we will walk through more examples of Bayesian inference in R using rstan. We will discuss how to specify different types of prior distributions, how to perform model checking, and how to make inferences from the posterior samples.</p>
+<p>After fitting the model, we can extract the posterior samples using the extract() function and use them to make inferences about the parameters of the model.</p>
+<div class="cell" data-hash="Intro_to_Bayesian_inference__cache/html/unnamed-chunk-3_8c860b4e5cb3e1397a3dba8a6799fe16">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>posterior_sample <span class="ot">&lt;-</span> <span class="fu">extract</span>(fit)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior_sample<span class="sc">$</span>alpha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Intro_to_Bayesian_inference__files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(posterior_sample<span class="sc">$</span>beta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Intro_to_Bayesian_inference__files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can also use the summary() function to get a summary of the posterior samples.</p>
+<div class="cell" data-hash="Intro_to_Bayesian_inference__cache/html/unnamed-chunk-4_02615e2780acb27c33a415065bb9978e">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$summary
+              mean     se_mean         sd        2.5%          25%          50%
+alpha  -0.05484634 0.001540790 0.09877400  -0.2480043  -0.12208209  -0.05460930
+beta    0.03900751 0.001503306 0.09666790  -0.1510422  -0.02485507   0.03853799
+sigma   0.99442561 0.001222302 0.07135842   0.8683019   0.94409887   0.99128136
+lp__  -48.67436299 0.028425827 1.22736502 -51.8347498 -49.24862041 -48.36354920
+               75%       97.5%    n_eff      Rhat
+alpha   0.01152634   0.1361985 4109.586 0.9999308
+beta    0.10374643   0.2306704 4134.948 1.0005715
+sigma   1.03967170   1.1476783 3408.268 1.0001592
+lp__  -47.75664948 -47.2666562 1864.324 1.0006563
+
+$c_summary
+, , chains = chain:1
+
+         stats
+parameter         mean         sd        2.5%          25%          50%
+    alpha  -0.05709371 0.09757981  -0.2471315  -0.12310819  -0.05759117
+    beta    0.03651528 0.09684627  -0.1525438  -0.02310176   0.03794865
+    sigma   0.99284436 0.07162529   0.8664163   0.94162997   0.99037988
+    lp__  -48.66354424 1.23197982 -52.0483587 -49.19342552 -48.36879549
+         stats
+parameter          75%       97.5%
+    alpha   0.01160497   0.1263622
+    beta    0.09941187   0.2229508
+    sigma   1.03775770   1.1465104
+    lp__  -47.77041488 -47.2629841
+
+, , chains = chain:2
+
+         stats
+parameter         mean         sd        2.5%          25%          50%
+    alpha  -0.05770044 0.09715318  -0.2460799  -0.12312813  -0.05808516
+    beta    0.03885034 0.09578885  -0.1538171  -0.02749813   0.03881504
+    sigma   0.99517703 0.06922725   0.8750465   0.94835190   0.99095984
+    lp__  -48.62225025 1.20378620 -51.7135527 -49.22311051 -48.29251974
+         stats
+parameter           75%       97.5%
+    alpha   0.006311798   0.1363272
+    beta    0.104804890   0.2299949
+    sigma   1.038284789   1.1461003
+    lp__  -47.727367300 -47.2481885
+
+, , chains = chain:3
+
+         stats
+parameter         mean         sd        2.5%          25%          50%
+    alpha  -0.05325436 0.10292779  -0.2530522  -0.12364880  -0.05147409
+    beta    0.04339726 0.09471326  -0.1268470  -0.02442053   0.03847646
+    sigma   0.99460010 0.07310278   0.8604334   0.94472536   0.99165317
+    lp__  -48.71891620 1.27211939 -51.7263412 -49.34043001 -48.40490527
+         stats
+parameter          75%       97.5%
+    alpha   0.01383604   0.1500638
+    beta    0.10746961   0.2351478
+    sigma   1.04007135   1.1519796
+    lp__  -47.80104359 -47.2899148
+
+, , chains = chain:4
+
+         stats
+parameter         mean         sd        2.5%          25%          50%
+    alpha  -0.05133684 0.09732288  -0.2443792  -0.11662012  -0.04880835
+    beta    0.03726715 0.09926189  -0.1640099  -0.02391606   0.03925483
+    sigma   0.99508095 0.07150700   0.8682363   0.94189635   0.99163019
+    lp__  -48.69274127 1.19995810 -51.8372455 -49.26970243 -48.39879817
+         stats
+parameter          75%       97.5%
+    alpha   0.01337844   0.1342808
+    beta    0.10232022   0.2284402
+    sigma   1.04341637   1.1462391
+    lp__  -47.76476396 -47.2884130</code></pre>
+</div>
+</div>
+<p>Several different priors can be implemented in the ‘rstan’ package. With a normal distribution we can specify weakly informative priors or strong priors. This will be examined in the next parts of this chapter. Other options are a custom prior or a Dirichlet prior.</p>
 </section>
 <section id="model-checking" class="level1">
 <h1>Model Checking</h1>
 <p>After fitting a Bayesian model, it is important to check the model’s fit to the data. This process is known as model checking. Model checking helps us to ensure that the model is a good fit to the data and that the posterior samples are representative of the true posterior distribution.</p>
 <p>There are several methods for model checking in Bayesian inference. Some of the most common methods include:</p>
 <p>Trace plots: A trace plot shows the progression of the Markov chain for each parameter. It helps to check for convergence and to identify any problems with the sampling process.</p>
+<div class="cell" data-hash="Intro_to_Bayesian_inference__cache/html/unnamed-chunk-5_130ed408a135d2a8ee0fa0d5b32a4764">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Trace plot for alpha</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">traceplot</span>(fit, <span class="at">pars =</span> <span class="st">"alpha"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Intro_to_Bayesian_inference__files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Trace plot for beta</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">traceplot</span>(fit, <span class="at">pars =</span> <span class="st">"beta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Intro_to_Bayesian_inference__files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Here’s how to interpret trace plots:</p>
+<p>-Each chain corresponds to a different MCMC chain. -The y-axis represents the parameter values. -The x-axis represents the iteration number. -Chains have converged: The chains should show a stable behavior, indicating that they have converged to the target distribution. -Random walk behavior: The chains should exhibit a random walk-like pattern without strong trends or patterns.</p>
 <p>Autocorrelation plots: An autocorrelation plot shows the correlation between the samples at different lags. It helps to check for independence of the samples and to identify any problems with the mixing of the Markov chain.</p>
+<div class="cell" data-hash="Intro_to_Bayesian_inference__cache/html/unnamed-chunk-6_08ee78ea0c08d214f45ddd99bc0c7f7a">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Autocorrelation plot for alpha</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>alpha_samples <span class="ot">&lt;-</span> <span class="fu">extract</span>(fit)<span class="sc">$</span>alpha</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>autocorr_alpha <span class="ot">&lt;-</span> <span class="fu">acf</span>(alpha_samples, <span class="at">lag.max =</span> <span class="dv">20</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(autocorr_alpha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Intro_to_Bayesian_inference__files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 <p>Density plots: A density plot shows the distribution of the posterior samples for each parameter. It helps to check for unimodality and to identify any problems with the choice of prior distribution.</p>
+<div class="cell" data-hash="Intro_to_Bayesian_inference__cache/html/unnamed-chunk-7_520cf8d0a951060f2d6e6ab8232bdbb0">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Density plot for alpha</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>density_plot_alpha <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">alpha =</span> alpha_samples), <span class="fu">aes</span>(<span class="at">x =</span> alpha)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Density Plot for Alpha"</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(density_plot_alpha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Intro_to_Bayesian_inference__files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 <section id="making-inferences-from-posterior-samples" class="level1">
 <h1>Making Inferences from Posterior Samples</h1>
 <p>Once we have performed model checking and ensured that the model is a good fit to the data, we can use the posterior samples to make inferences about the parameters of the model .</p>
 <p>One way to make inferences is by calculating summary statistics of the posterior samples, such as the mean, median, and credible intervals. The mean and median of the posterior samples provide a point estimate of the parameter, while the credible intervals provide a range of plausible values.</p>
 <p>Another way to make inferences is by visualizing the posterior samples using plots such as histograms and kernel density plots. These plots can help to understand the shape of the posterior distribution and the uncertainty of the estimates.</p>
-<p>Additionally, we can use the posterior samples to simulate from the model. This can help to understand the predictions of the model, for example, we can use the posterior samples to predict the outcomes of new data.</p>
+<div class="cell" data-hash="Intro_to_Bayesian_inference__cache/html/unnamed-chunk-8_3006374575eb789d48842649ed1fdc75">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform model checking and ensure a good fit to the data</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate summary statistics</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize posterior distribution using histograms</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>hist_plot_alpha <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">alpha =</span> <span class="fu">extract</span>(fit)<span class="sc">$</span>alpha), <span class="fu">aes</span>(<span class="at">x =</span> alpha)) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram of Posterior Samples for Alpha"</span>)<span class="sc">+</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hist_plot_alpha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Intro_to_Bayesian_inference__files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize posterior distribution using kernel density plots</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>density_plot_beta <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">beta =</span> <span class="fu">extract</span>(fit)<span class="sc">$</span>beta), <span class="fu">aes</span>(<span class="at">x =</span> beta)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"green"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Kernel Density Plot of Posterior Samples for Beta"</span>)<span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(density_plot_beta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Intro_to_Bayesian_inference__files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate from the model using posterior samples</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>num_simulations <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>simulated_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(num_simulations))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>simulated_predictions <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, num_simulations)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_simulations) {</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  simulated_predictions[[i]] <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">1</span>, <span class="fu">exp</span>(summary_stats<span class="sc">$</span>summary[<span class="dv">1</span>, <span class="st">"mean"</span>] <span class="sc">+</span> summary_stats<span class="sc">$</span>summary[<span class="dv">2</span>, <span class="st">"mean"</span>] <span class="sc">*</span> simulated_data<span class="sc">$</span>x[i]))</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
-<p>In this guide, we will discus the basics of Bayesian inference in R using the rstan package. We have shown how to specify a model in Stan language, how to fit the model to the data, and how to make inferences from the posterior samples. We will also discus the importance of model checking and the different methods for making inferences from the posterior samples.</p>
-<p>Bayesian inference is a powerful tool for statistical modeling and can be applied to a wide range of problems. The rstan package provides a flexible and efficient way to perform Bayesian inference in R. It allows us to specify complex models, perform model checking, and make inferences from the posterior samples with ease.</p>
+<p>In this guide, we will discus the basics of Bayesian inference in R using the rstan package. We have shown how to specify a model in Stan language, how to fit the model to the data. Bayesian inference is a powerful tool for statistical modeling and can be applied to a wide range of problems. The rstan package provides a flexible and efficient way to perform Bayesian inference in R. It allows us to specify complex models, perform model checking, and make inferences from the posterior samples with ease.</p>
 
 
 </section>
@@ -632,7 +785,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Intro_to_The_Bayes_filter_.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Intro to the Bayes filter</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Bayes filter</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

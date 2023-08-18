@@ -3,9 +3,9 @@ project:
   output-dir: docs
 
 book:
-  title: "quartobook_rick_duco"
+  title: "Intro to Bayesian inference and approximation methods in R (work in progress)"
   author: "Rick ten Eikelder en Duco Veen"
-  date: "12-05-2023"
+  date: "17-08-2023"
   chapters:
     - index.qmd
     - part: Intro_to_Bayesian_inference_.qmd

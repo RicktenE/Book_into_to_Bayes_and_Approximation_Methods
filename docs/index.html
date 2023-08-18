@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rick ten Eikelder en Duco Veen">
-<meta name="dcterms.date" content="2023-12-05">
+<meta name="dcterms.date" content="2024-05-08">
 
-<title>quartobook_rick_duco</title>
+<title>Intro to Bayesian inference and approximation methods in R (work in progress)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">quartobook_rick_duco</a> 
+      <a href="./">Intro to Bayesian inference and approximation methods in R (work in progress)</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -117,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Intro_to_The_Bayes_filter_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Intro to the Bayes filter</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Bayes filter</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -170,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Bootstrap_filter_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Intro to prior influence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bootstrap filter (To Be Continued)</span></span></a>
   </div>
 </li>
       </ul>
@@ -178,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./Markov_Chain_Monte_Carlo_methods_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Markov Chain Monte Carlo methods</span></a>
+ <span class="menu-text">Markov Chain Monte Carlo methods (To Be Continued)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -187,30 +187,26 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Metropolis_Hastings_algorithm_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Metropolis Hastings algorithm</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Metropolis Hastings algorithm (To Be Continued)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Gibbs_sampling_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Gibbs sampling</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Gibbs sampling (To Be Continued)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Hamiltonian_Monte_Carlo_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hamiltonian monte carlo</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hamiltonian monte carlo (To Be Continued)</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Intro to prior influence</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Intro to prior influence</span></span>
+ <span class="menu-text">Concluding, Comparison (To Be Continued)</span></span>
   </li>
     </ul>
     </div>
@@ -231,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">quartobook_rick_duco</h1>
+<h1 class="title">Intro to Bayesian inference and approximation methods in R (work in progress)</h1>
 </div>
 
 
@@ -248,7 +244,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 5, 2023</p>
+      <p class="date">May 8, 2024</p>
     </div>
   </div>
   
@@ -260,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="preface" class="level1 unnumbered">
 <h1 class="unnumbered">Preface</h1>
-<p>This is a collection of works based on a collaboration between Rick ten Eikelder and Duco Veen.</p>
+<p>This file describes basic use of R for Bayesian statistical analysis and approximation methods. The importance on the choices of prior are shown. The influence of different shapes of priors are shown. The file concludes with approximation methods. It is a work in progress and the later chapters (to be continued) might still be added for completion. This is a collection of works based on a collaboration between Rick ten Eikelder and Duco Veen.</p>
 
 
 </section>

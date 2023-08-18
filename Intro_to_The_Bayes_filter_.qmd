@@ -1,5 +1,5 @@
 ---
-title: "Intro to the Bayes filter"
+title: "The Bayes filter"
 format: html
 execute: 
   cache: true
